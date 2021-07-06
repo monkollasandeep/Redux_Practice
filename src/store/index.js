@@ -1,19 +1,27 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import { rootSagas }   from "../sagas/saga";
 
 import counterReducer from "./counter";
 import authReducer from "./auth";
+import powerReducer from "./power";
 
-const store = configureStore({
-    reducer: { counter: counterReducer, auth: authReducer }
+const reducer = combineReducers({
+    counter: counterReducer, 
+    auth: authReducer, 
+    power: powerReducer
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+    reducer,
+    middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware]
+});
+
+sagaMiddleware.run(rootSagas);
 
 export default store;
-
-
-
-
-
 
 
 
