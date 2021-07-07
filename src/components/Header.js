@@ -19,7 +19,7 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="/">My Boards</a>
+              <a href="/">My Power</a>
             </li>
             <li>
               <a href="/">My Scores</a>

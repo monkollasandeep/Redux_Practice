@@ -8,15 +8,15 @@ const powerSlice = createSlice({
     initialState,
     reducers: {
         addp(state) {
-            state.power++;
+            return {...state, power : state.power + 1};
         },
         subp(state) {
-            state.power--;
+            return {...state, power : state.power - 1};
         },
         boostp() {
         },
         fullchargep(state) {
-            state.power = state.power + 10;
+            return {...state, power : state.power + 10};
         },
     }
 });
